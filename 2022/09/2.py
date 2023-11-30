@@ -43,8 +43,10 @@ def adjust(head, tail):
     return tx, ty
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2022, 9, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     hx, hy = 0, 0
     tail = [(hx, hy)] * 9
     visited = {(hx, hy)}
@@ -58,8 +60,3 @@ def solve(input: Any) -> int | str | Answer:
             visited.add((*tail[-1],))
     return len(visited)
 
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

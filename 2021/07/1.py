@@ -10,15 +10,12 @@ def parse(input: str) -> Any:
     return [int(num) for num in input.split(",")]
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2021, 7, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     position = int(statistics.median(input))
     fuel = 0
     for crab in input:
         fuel += abs(crab - position)
     return fuel
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

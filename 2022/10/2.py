@@ -16,8 +16,11 @@ def print(*args, **kwargs):
     _print(*args, **kwargs, end="")
 
 
-def solve(input: Any) -> int | str | Answer:
+# TODO: Implement NoSubmit
+# @solution(2022, 10, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     x = 1
     for i, instruction in enumerate(input):
         cursor = i % 40
@@ -30,8 +33,3 @@ def solve(input: Any) -> int | str | Answer:
         if instruction is not None:
             x += instruction
     return NoSubmit(None)
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

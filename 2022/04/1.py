@@ -9,14 +9,11 @@ def parse(input: str) -> Any:
     return [(map(int, first.split("-")), map(int, second.split("-"))) for first, second in [line.split(",") for line in input.splitlines()]]
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2022, 4, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     count = 0
     for ((first_start, first_end), (second_start, second_end)) in input:
         count += (first_start >= second_start and first_end <= second_end) or (first_start <= second_start and first_end >= second_end)
     return count
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

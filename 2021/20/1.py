@@ -23,8 +23,11 @@ def parse(input: str) -> tuple[list[bool], list[tuple[int, int]]]:
     return enhancement, image
 
 
-def solve(input: tuple[list[bool], list[tuple[int, int]]]) -> int | str | Answer:
+# TODO: Implement irange()
+# @solution(2021, 20, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     enhancement, image = input
     for iteration in range(2):
         on = iteration % 2 == 0
@@ -42,8 +45,3 @@ def solve(input: tuple[list[bool], list[tuple[int, int]]]) -> int | str | Answer
                     new_image.add((r, c))
         image = new_image
     return len(image)
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

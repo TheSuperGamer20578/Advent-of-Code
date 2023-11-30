@@ -12,8 +12,10 @@ def parse(input: str) -> Any:
     return template, rules
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2021, 14, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     poly, rules = input
     for _ in range(10):
         offset = 1
@@ -25,8 +27,3 @@ def solve(input: Any) -> int | str | Answer:
     for char in poly:
         counts[char] += 1
     return max(counts.values()) - min(counts.values())
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

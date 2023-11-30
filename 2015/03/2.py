@@ -9,8 +9,10 @@ def parse(input: str) -> Any:
     return input
 
 
-def solve(input: Any) -> Answer:
+@solution(2015, 3, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     x = y = rx = ry = 0
     visited = {(0, 0)}
     for char in input:
@@ -25,9 +27,4 @@ def solve(input: Any) -> Answer:
                 y -= 1
         visited.add((x, y))
         x, y, rx, ry = rx, ry, x, y
-    return Answer(len(visited))
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)
+    return len(visited)

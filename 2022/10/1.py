@@ -9,8 +9,10 @@ def parse(input: str) -> Any:
     return sum(([None] if line == "noop" else [None, int(line.split(" ")[1])] for line in input.splitlines()), start=[])
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2022, 10, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     x = 1
     answer = 0
     for i, instruction in enumerate(input, 1):
@@ -19,8 +21,3 @@ def solve(input: Any) -> int | str | Answer:
         if instruction is not None:
             x += instruction
     return answer
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

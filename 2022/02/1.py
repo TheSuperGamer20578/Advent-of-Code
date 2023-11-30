@@ -16,8 +16,10 @@ WIN = {
 }
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2022, 2, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     total = 0
     for them, you in input:
         total += ord(you) - 87
@@ -26,8 +28,3 @@ def solve(input: Any) -> int | str | Answer:
         elif you == WIN[them]:
             total += 6
     return total
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

@@ -33,8 +33,10 @@ def parse(input: str) -> Any:
     ) for monkey in monkeys]
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2022, 11, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     for _ in range(20):
         for monkey in input:
             while len(monkey.items) > 0:
@@ -45,8 +47,3 @@ def solve(input: Any) -> int | str | Answer:
                 monkey.inspections += 1
     m1, m2 = *sorted(input)[-2:],
     return m1.inspections * m2.inspections
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

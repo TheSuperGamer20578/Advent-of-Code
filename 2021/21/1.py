@@ -16,8 +16,10 @@ def parse(input: str) -> Any:
     return int(input.splitlines()[0].split(" ")[-1]), int(input.splitlines()[1].split(" ")[-1])
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2021, 21, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     player1, player2 = input
     dice = rolls = score1 = score2 = 0
     p1 = False
@@ -40,8 +42,3 @@ def solve(input: Any) -> int | str | Answer:
         player2 = increment(player2, 10, move)
         score2 += player2
     return (score2 if p1 else score1) * rolls
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

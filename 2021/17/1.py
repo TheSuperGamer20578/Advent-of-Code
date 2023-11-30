@@ -13,8 +13,10 @@ def parse(input: str) -> bounds:
     return bounds(*map(int, input[15:].replace(", y=", "..").split("..")))
 
 
-def solve(input: bounds) -> int | str | Answer:
+@solution(2021, 17, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     best = -math.inf
     for dx in range(-200, 200):
         for dy in range(-200, 200):
@@ -35,8 +37,3 @@ def solve(input: bounds) -> int | str | Answer:
                     best = max(best, highest)
                     break
     return best
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

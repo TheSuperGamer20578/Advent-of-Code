@@ -75,8 +75,10 @@ def parse(input: str) -> Any:
     return root
 
 
-def solve(input: tuple[Monkey, Monkey]) -> int | str | Answer:
+@solution(2022, 21, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     global humn
     a, b = input
     a = monkeys[a]
@@ -102,8 +104,3 @@ def solve(input: tuple[Monkey, Monkey]) -> int | str | Answer:
             return humn
         elif difference > 0:
             high = humn
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

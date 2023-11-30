@@ -23,8 +23,10 @@ def find(to_search: list[list[Any]], to_find: Any) -> tuple[int, int] | None:
     return None
 
 
-def solve(input: list[list[int]]) -> int | str | Answer:
+@solution(2022, 12, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     sx, sy = find(input, ord("S"))
     ex, ey = find(input, ord("E"))
     input[sx][sy] = ord("a")
@@ -50,8 +52,3 @@ def solve(input: list[list[int]]) -> int | str | Answer:
                 continue
             queue.append(path + [(nx, ny, nh)])
             seen.add((nx, ny))
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

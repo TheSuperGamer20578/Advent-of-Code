@@ -10,8 +10,11 @@ def parse(input: str) -> Any:
     return [[int(energy) for energy in line] for line in input.split("\n")]
 
 
-def solve(input: Any) -> int | str | Answer:
+# TODO: Fix
+# @solution(2021, 11, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     flashes = 0
     flashed: set[tuple[int, int]] = set()
     ready: list[tuple[int, int]] = []
@@ -39,8 +42,3 @@ def solve(input: Any) -> int | str | Answer:
                     input[x][y] = 0
                     flashes += 1
     return flashes
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

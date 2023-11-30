@@ -9,13 +9,15 @@ def parse(input: str) -> Any:
     return [int(num) for num in input.split(",")]
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2019, 2, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     pc = 0
     # input[1] = 12
     # input[2] = 2
     while True:
-        print(input)
+        # print(input)
         match input[pc]:
             case 1:
                 input[input[pc + 3]] = input[pc + 1] + input[pc + 2]
@@ -28,8 +30,3 @@ def solve(input: Any) -> int | str | Answer:
             case _:
                 raise Exception('"Encountering an unknown opcode means something went wrong."')
     return input
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

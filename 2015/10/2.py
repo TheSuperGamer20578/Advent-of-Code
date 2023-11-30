@@ -11,16 +11,13 @@ def parse(input: str) -> Any:
     return input
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2015, 10, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     for _ in range(50):
         new = ""
         for match in REGEX.finditer(input):
             new += f"{len(match.group(1))}{match.group(2)}"
         input = new
     return len(input)
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

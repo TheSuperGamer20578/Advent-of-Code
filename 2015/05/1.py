@@ -4,7 +4,7 @@ from __future__ import annotations
 from typing import Any
 from itertools import pairwise
 
-# from aoc import * TODO
+from aoc import *
 
 
 def parse(input: str) -> Any:
@@ -12,8 +12,10 @@ def parse(input: str) -> Any:
     return input.splitlines()
         
 
-def solve(input: Any) -> int | str:
+@solution(2015, 5, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     nice = 0
     for s in input:
         if any(ss in s for ss in ("ab", "cd", "pq", "xy")):
@@ -29,9 +31,3 @@ def solve(input: Any) -> int | str:
             continue
         nice += 1
     return nice
-
-
-if __name__ == "__main__":
-    with open(".input") as f:
-        input = parse(f.read().strip())
-    print(solve(input))

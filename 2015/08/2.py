@@ -9,11 +9,8 @@ def parse(input: str) -> Any:
     return [line.strip() for line in input.splitlines()]
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2015, 8, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     return sum(line.count('"') + line.count("\\") + 2 for line in input)
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

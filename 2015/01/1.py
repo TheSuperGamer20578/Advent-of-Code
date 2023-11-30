@@ -9,11 +9,8 @@ def parse(input: str) -> Any:
     return input
 
 
-def solve(input: Any) -> Answer:
+@solution(2015, 1, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
-    return Answer(input.count("(") - input.count(")"))
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)
+    input = parse(input)
+    return input.count("(") - input.count(")")

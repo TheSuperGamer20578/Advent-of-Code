@@ -33,12 +33,9 @@ def count_win(player1: int, player2: int, score1: int, score2: int) -> tuple[int
     return ans
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2021, 21, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     player1, player2 = input
     return max(count_win(player1, player2, 0, 0))
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

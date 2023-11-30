@@ -24,8 +24,10 @@ def wrap(xs: int, ys: int, x: int, y: int, dx: int, dy: int) -> tuple[int, int]:
     return x, y
 
 
-def solve(input: tuple[int, int, dict[tuple[int, int], bool]]) -> int | str | Answer:
+@solution(2021, 25, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     xs, ys, grid = input
     for step in count():
         old = grid.copy()
@@ -43,10 +45,5 @@ def solve(input: tuple[int, int, dict[tuple[int, int], bool]]) -> int | str | An
                     del new[x, y]
                     new[wrap(xs, ys, x, y, 0, 1)] = False
         if grid == old:
-            return Answer(step + 1)
+            return step + 1
         grid = new
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

@@ -16,11 +16,8 @@ def priority(char: str) -> int:
     return ord(char) - ord("A") + 27
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2022, 3, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     return sum(priority((first & last).pop()) for first, last in input)
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

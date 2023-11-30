@@ -9,8 +9,10 @@ def parse(input: str) -> Any:
     return input
 
 
-def solve(input: Any) -> Answer:
+@solution(2015, 1, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     floor = 0
     for i, char in enumerate(input):
         match char:
@@ -20,8 +22,3 @@ def solve(input: Any) -> Answer:
                 floor -= 1
         if floor < 0:
             return i + 1
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

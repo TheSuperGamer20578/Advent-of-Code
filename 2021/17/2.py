@@ -13,8 +13,10 @@ def parse(input: str) -> bounds:
     return bounds(*map(int, input[15:].replace(", y=", "..").split("..")))
 
 
-def solve(input: bounds) -> int | str | Answer:
+@solution(2021, 17, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     velocities = 0
     for dx in range(1000):
         for dy in range(-200, 1000):
@@ -33,8 +35,3 @@ def solve(input: bounds) -> int | str | Answer:
                     velocities += 1
                     break
     return velocities
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

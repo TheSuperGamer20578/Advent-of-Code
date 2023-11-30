@@ -15,8 +15,10 @@ def parse(input: str) -> Any:
     return count, rules, template[-1]
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2021, 14, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     poly, rules, last_char = input
     for _ in range(40):
         last = poly.copy()
@@ -29,8 +31,3 @@ def solve(input: Any) -> int | str | Answer:
     for pair, count in poly.items():
         counts[pair[0]] += count
     return max(counts.values()) - min(counts.values())
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

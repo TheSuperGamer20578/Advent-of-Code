@@ -68,11 +68,9 @@ def evaluate(input, n = -1):
     return packets
 
 
-def solve(input: Any) -> int | str | Answer:
+# TODO: Fix
+# @solution(2021, 16, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     return evaluate(input)[0]
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

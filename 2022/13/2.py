@@ -43,16 +43,13 @@ def parse(input: str) -> Any:
     return [Packet(eval(packet)) for packet in input.replace("\n\n", "\n").splitlines()]
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2022, 13, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     div1 = Packet([[2]])
     div2 = Packet([[6]])
     input.append(div1)
     input.append(div2)
     input.sort()
     return (input.index(div1) + 1) * (input.index(div2) + 1)
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

@@ -13,15 +13,12 @@ def parse(input: str) -> Any:
     return list(map(lambda x: (int(x.group(1)), int(x.group(2)), int(x.group(3))), (REGEX.match(line.strip()) for line in input.splitlines())))
 
 
-def solve(input: Any) -> Answer:
+@solution(2015, 2, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     ribbon = 0
     for present in input:
         faces = (present[0]+present[1]) * 2, (present[1]+present[2]) * 2, (present[0]+present[2]) * 2
         ribbon += min(faces) + prod(present)
-    return Answer(ribbon)
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)
+    return ribbon

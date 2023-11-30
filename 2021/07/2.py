@@ -10,8 +10,10 @@ def parse(input: str) -> Any:
     return [int(num) for num in input.split(",")]
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2021, 7, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     best = math.inf
     for position in range(min(input), max(input) + 1):
         fuel = 0
@@ -21,8 +23,3 @@ def solve(input: Any) -> int | str | Answer:
         if fuel < best:
             best = fuel
     return best
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

@@ -9,8 +9,10 @@ def parse(input: str) -> Any:
     return [list(map(int, row)) for row in input.splitlines()]
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2022, 8, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     visible = set()
     for x, row in enumerate(input):
         highest = -1
@@ -39,8 +41,3 @@ def solve(input: Any) -> int | str | Answer:
                 highest = tree
                 visible.add((x, y))
     return len(visible)
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

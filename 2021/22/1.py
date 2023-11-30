@@ -18,8 +18,11 @@ def parse(input: str) -> list[tuple[bool, int, int, int, int, int, int]]:
     return steps
 
 
-def solve(input: list[tuple[bool, int, int, int, int, int, int]]) -> int | str | Answer:
+# TODO: Implement irange()
+# @solution(2021, 22, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     on: set[tuple[int, int, int]] = set()
     for step in input:
         enable, x1, x2, y1, y2, z1, z2 = step
@@ -34,8 +37,3 @@ def solve(input: list[tuple[bool, int, int, int, int, int, int]]) -> int | str |
         else:
             on -= set(product(irange(max(x1, -50), min(x2, 50)), irange(max(y1, -50), min(y2, 50)), irange(max(z1, -50), min(z2, 50))))
     return len(on)
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

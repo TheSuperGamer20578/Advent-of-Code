@@ -15,15 +15,13 @@ def parse(input: str) -> Any:
     return start, proc
 
 
-def solve(input: Any) -> int | str | Answer:
+# TODO: implement irange()
+# @solution(2022, 5, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     stacks, proc = input
     for n, f, t in proc:
         stacks[t][:0] = stacks[f][:n]
         del stacks[f][:n]
     return "".join(stacks[stack][0] for stack in irange(1, len(stacks.keys())))
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

@@ -25,8 +25,10 @@ def sign(n: int) -> int:
     return 0
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2022, 9, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     tx, ty = hx, hy = 0, 0
     visited = {(tx, ty)}
     for (dx, dy), n in input:
@@ -40,8 +42,3 @@ def solve(input: Any) -> int | str | Answer:
             visited.add((tx, ty))
     return len(visited)
 
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

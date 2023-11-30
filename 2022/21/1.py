@@ -68,11 +68,8 @@ def parse(input: str) -> Any:
             monkeys[key] = Monkey(value)
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2022, 21, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     return monkeys["root"].value()
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

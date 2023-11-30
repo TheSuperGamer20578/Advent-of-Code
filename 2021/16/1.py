@@ -17,8 +17,10 @@ def read(input, bits):
     return int("".join(stuff), 2)
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2021, 16, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     versions = 0
     while input:
         versions += read(input, 3)
@@ -29,8 +31,3 @@ def solve(input: Any) -> int | str | Answer:
         else:
             read(input, 11 if read(input, 1) else 15)
     return versions
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

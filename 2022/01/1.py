@@ -9,11 +9,8 @@ def parse(input: str) -> Any:
     return [map(int, elf.splitlines()) for elf in input.split("\n\n")]
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2022, 1, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     return max(sum(elf) for elf in input)
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

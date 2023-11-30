@@ -36,8 +36,10 @@ def check_accessible(droplet: set[tuple[int, int, int]], x: int, y: int, z: int,
 
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2022, 18, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     ubx = max(cube[0] for cube in input)
     lbx = min(cube[0] for cube in input)
     uby = max(cube[1] for cube in input)
@@ -51,8 +53,3 @@ def solve(input: Any) -> int | str | Answer:
             if (nx, ny, nz) not in input and check_accessible(input, nx, ny, nz, ubx, lbx, uby, lby, ubz, lbz):
                 surface += 1
     return surface
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

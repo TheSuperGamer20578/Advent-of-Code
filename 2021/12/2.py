@@ -25,8 +25,10 @@ def parse(input: str) -> Any:
     return caves
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2021, 12, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     queue = deque([Path(("start",))])
     paths = 0
     while queue:
@@ -41,8 +43,3 @@ def solve(input: Any) -> int | str | Answer:
                 continue
             queue.append(path + cave)
     return paths
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

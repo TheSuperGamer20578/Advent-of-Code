@@ -26,16 +26,13 @@ def parse(input: str) -> Any:
     return files
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2022, 7, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     dirs = Counter()
     for (*dir, _), size in input.items():
         if size is not None:
             for i in range(len(dir)):
                 dirs[tuple(dir[:i + 1])] += size
     return sum(size for size in dirs.values() if size <= 100000)
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

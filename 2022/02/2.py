@@ -28,14 +28,11 @@ SCORE = {
 }
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2022, 2, 2)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     total = 0
     for them, result in input:
         total += SCORE[result][them]
     return total
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)

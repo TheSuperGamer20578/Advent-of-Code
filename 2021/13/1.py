@@ -12,14 +12,11 @@ def parse(input: str) -> Any:
     return page, folds
 
 
-def solve(input: Any) -> int | str | Answer:
+@solution(2021, 13, 1)
+def solve(input: str) -> int | str:
     """Solve the puzzle"""
+    input = parse(input)
     page, folds = input
     axis, position = folds[0]
     page = {pos if pos[axis] < position else ((pos[0] if axis else position*2 - pos[0]),(pos[1] if not axis else position*2 - pos[1])) for pos in page.copy() if pos[axis] != position}
     return len(page)
-
-
-if __name__ == "__main__":
-    from aoc.run import run
-    run(parse, solve)
